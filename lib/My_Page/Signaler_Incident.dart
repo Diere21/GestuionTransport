@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // Importer le package intl pour formater la date
+
+import 'package:intl/intl.dart';
+
+
+
+
+
+
+
+
+
+
+
 
 
 class IncidentReportPage extends StatefulWidget {
@@ -12,15 +24,14 @@ class _IncidentReportPageState extends State<IncidentReportPage> {
   TextEditingController _locationController = TextEditingController();
   TextEditingController _vehicleNumberController = TextEditingController();
 
-  String _selectedDate = '';// Variable pour stocker la date actuelle
+  String? _selectedDate;
 
   String _errorMessage = '';
 
   List<String> _dates = [
-    DateTime.now().toString(), // Ajouter la date actuelle en première position
-    '1er juillet 2023',
-    '2 juillet 2023',
-    '3 juillet 2023',
+    DateFormat('d MMMM yyyy', 'fr').format(DateTime.now()), // Utiliser le format de date souhaité
+    DateFormat('d MMMM yyyy', 'fr').format(DateTime.now().add(Duration(days: 1))),
+    DateFormat('d MMMM yyyy', 'fr').format(DateTime.now().add(Duration(days: 2))),
     // Ajoutez les autres dates de votre choix
   ];
 
@@ -29,13 +40,11 @@ class _IncidentReportPageState extends State<IncidentReportPage> {
     String location = _locationController.text.trim();
     String vehicleNumber = _vehicleNumberController.text.trim();
 
-    if (_selectedDate.isEmpty || description.isEmpty || location.isEmpty || vehicleNumber.isEmpty) {
+    if (_selectedDate == null || description.isEmpty || location.isEmpty || vehicleNumber.isEmpty) {
       setState(() {
         _errorMessage = 'Veuillez remplir tous les champs.';
       });
     } else {
-      // Soumettre le rapport à l'API ou effectuer toute autre action nécessaire
-
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Le signalement a été envoyé avec succès')),
       );
@@ -51,22 +60,6 @@ class _IncidentReportPageState extends State<IncidentReportPage> {
     _descriptionController.clear();
     _locationController.clear();
     _vehicleNumberController.clear();
-  }
-
-  String _formatDate(String date) {
-    // Convertir la date en objet DateTime
-    DateTime dateTime = DateTime.parse(date);
-
-    // Formater la date selon le format souhaité
-    String formattedDate = DateFormat('dd MMMM yyyy').format(dateTime);
-
-    return formattedDate;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _selectedDate= DateTime.now().toString(); // Obtenir la date actuelle
   }
 
   @override
@@ -91,8 +84,7 @@ class _IncidentReportPageState extends State<IncidentReportPage> {
           child: Column(
             children: [
               DropdownButtonFormField<String>(
-                value: _selectedDate != '' ? _selectedDate : null,
-
+                value: _selectedDate ?? _dates[0],
                 decoration: InputDecoration(
                   labelText: 'Date',
                   filled: true,
@@ -104,12 +96,12 @@ class _IncidentReportPageState extends State<IncidentReportPage> {
                 items: _dates.map((date) {
                   return DropdownMenuItem<String>(
                     value: date,
-                    child: Text(date), // Utiliser la méthode _formatDate pour formater la date
+                    child: Text(date),
                   );
                 }).toList(),
                 onChanged: (value) {
                   setState(() {
-                    _selectedDate = value!;
+                    _selectedDate = value;
                   });
                 },
               ),
