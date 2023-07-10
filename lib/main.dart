@@ -1,5 +1,6 @@
 import 'package:gestion_transport/My_Page/Home_Page.dart';
 import 'package:gestion_transport/My_Page/InterurbainPage.dart';
+import 'package:gestion_transport/My_Page/PagesInscription/Caract%C3%A9ristique/Ecran_login/Page_Login.dart';
 import 'package:gestion_transport/My_Page/Signaler_Incident.dart';
 import 'package:gestion_transport/My_Page/UrbainPage.dart';
 
@@ -14,15 +15,15 @@ void main() {
   });
 }
 
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Application de transport',
-      initialRoute: '/',
+      initialRoute: '/login', // Modifier la valeur de initialRoute pour diriger vers la page de connexion
       routes: {
         '/': (context) => HomePage(),
+        '/login': (context) => LoginScreen(), // Ajouter la route vers la page de connexion
         '/interurbain': (context) => InterurbainPage(),
         '/urbain': (context) => UrbainPage(),
         '/signaler_incident': (context) => IncidentReportPage(),
