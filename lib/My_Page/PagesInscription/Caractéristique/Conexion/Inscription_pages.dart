@@ -48,7 +48,7 @@ class _SignupScreenState extends State<SignupScreen> {
             colorFilter: ColorFilter.mode(
                 HexColor("#fff").withOpacity(0.2), BlendMode.dstATop),
             image: const NetworkImage(
-              'https://mir-s3-cdn-cf.behance.net/project_modules/fs/01b4bd84253993.5d56acc35e143.jpg',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYR6nfjnyXFVNI4yK5kDc_5-PL2YqOXynDA&usqp=CAU',
             ),
           ),
         ),
@@ -73,7 +73,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         FadeAnimation(
                           delay: 0.8,
                           child: Image.network(
-                            "https://cdni.iconscout.com/illustration/premium/thumb/job-starting-date-2537382-2146478.png",
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYR6nfjnyXFVNI4yK5kDc_5-PL2YqOXynDA&usqp=CAU",
                             width: 100,
                             height: 100,
                           ),
@@ -85,7 +85,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           delay: 1,
                           child: Container(
                             child: Text(
-                              "Create your account",
+                              "Creer un compte",
                               style: TextStyle(
                                   color: Colors.white.withOpacity(0.9),
                                   letterSpacing: 0.5),
@@ -124,7 +124,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                       : deaible,
                                   size: 20,
                                 ),
-                                hintText: 'Full Name',
+                                hintText: 'Nom complet',
                                 hintStyle: TextStyle(
                                     color: selected == FormData.Name
                                         ? enabledtxt
@@ -173,7 +173,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                       : deaible,
                                   size: 20,
                                 ),
-                                hintText: 'Phone Number',
+                                hintText: 'Tel',
                                 hintStyle: TextStyle(
                                     color: selected == FormData.Phone
                                         ? enabledtxt
@@ -289,7 +289,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     onPressed: () => setState(
                                             () => ispasswordev = !ispasswordev),
                                   ),
-                                  hintText: 'Password',
+                                  hintText: 'Mot de passe',
                                   hintStyle: TextStyle(
                                       color: selected == FormData.password
                                           ? enabledtxt
@@ -358,7 +358,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     onPressed: () => setState(
                                             () => ispasswordev = !ispasswordev),
                                   ),
-                                  hintText: 'Confirm Password',
+                                  hintText: 'Confirmer Mot de passe',
                                   hintStyle: TextStyle(
                                       color:
                                       selected == FormData.ConfirmPassword
@@ -384,7 +384,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           child: TextButton(
                               onPressed: () {},
                               child: Text(
-                                "Sign Up",
+                                "S'inscrire",
                                 style: TextStyle(
                                   color: Colors.white,
                                   letterSpacing: 0.5,
@@ -417,7 +417,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text("If you have an account ",
+                      const Text("Vous avez déja un compte ",
                           style: TextStyle(
                             color: Colors.grey,
                             letterSpacing: 0.5,
@@ -430,7 +430,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             return LoginScreen();
                           }));
                         },
-                        child: Text("Sing in",
+                        child: Text("Se connecter",
                             style: TextStyle(
                                 color: Colors.white.withOpacity(0.9),
                                 fontWeight: FontWeight.bold,

@@ -20,44 +20,15 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   var affficheurErreur = false;
   void seConnecter() {
-    // Définir l'URL de l'API
-    Uri url = Uri.parse(
-        "http://localhost:81/dolibarr/api/index.php/login?login=${emailController.text}&password=${passwordController.text}");
-
-    // Récupérer les valeurs de l'email et du mot de passe depuis les contrôleurs
-    String email = emailController.text;
-    String password = passwordController.text;
-
-    // Envoyer une requête GET à l'API avec les paramètres email et password
-    http.get(url, headers: {
-      "login": email,
-      "password": password,
-    }).then((response) {
-      // Analyser la réponse JSON de l'API
-
-      dynamic data = jsonDecode(response.body);
-      print(data);
-      setState(() {
-        // Mettre à jour l'état de l'application avec les données reçues de l'API
-        if (data.containsKey('success') && data['success']['code'] == 200) {
-          print('ok');
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HomePage()),
-          );
-        }
-      });
-    }).catchError((error) {
-      // Gérer les erreurs de l'API
-      setState(() {
-        affficheurErreur = true;
-        emailController.text = '';
-        passwordController.text = '';
-      });
-      print(error);
-      print('je suis la ');
+    setState(() {
+      // Naviguer directement vers la page d'accueil
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
     });
   }
+
 
   Color enabled = const Color.fromARGB(255, 63, 56, 89);
   Color enabledtxt = Colors.white;
@@ -115,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         FadeAnimation(
                           delay: 0.8,
                           child: Image.network(
-                            "https://cdni.iconscout.com/illustration/premium/thumb/job-starting-date-2537382-2146478.png",
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYR6nfjnyXFVNI4yK5kDc_5-PL2YqOXynDA&usqp=CAU",
                             width: 100,
                             height: 100,
                           ),
@@ -126,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         FadeAnimation(
                           delay: 1,
                           child: const Text(
-                            "Please sign in to continue",
+                            "Bienvenu sur l'application Gnu-Demm!",
                             style: TextStyle(
                                 color: Colors.white, letterSpacing: 0.5),
                           ),
@@ -230,7 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     onPressed: () => setState(
                                         () => ispasswordev = !ispasswordev),
                                   ),
-                                  hintText: 'Password',
+                                  hintText: 'Mot de passe',
                                   hintStyle: TextStyle(
                                       color: selected == FormData.password
                                           ? enabledtxt
@@ -264,7 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 // }));
                               },
                               child: Text(
-                                "Login",
+                                "Se connecter",
                                 style: TextStyle(
                                   color: Colors.white,
                                   letterSpacing: 0.5,
@@ -300,7 +271,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         return ForgotPasswordScreen();
                       }));
                     }),
-                    child: Text("Can't Log In?",
+                    child: Text("Mot de passe oublier",
                         style: TextStyle(
                           color: Colors.white.withOpacity(0.9),
                           letterSpacing: 0.5,
@@ -314,7 +285,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text("Don't have an account? ",
+                      const Text("Vous n'avez pas de compte ",
                           style: TextStyle(
                             color: Colors.grey,
                             letterSpacing: 0.5,
